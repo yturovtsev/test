@@ -17,8 +17,9 @@ export default function withAuth(ComponentToProtect) {
           if (res.status === 200) {
             this.setState({ loading: false });
           } else {
+            console.log(res.status);
             const error = new Error(res.error);
-            throw error;
+            this.setState({ loading: false, redirect: true, error });
           }
         })
         .catch(err => {
@@ -34,6 +35,7 @@ export default function withAuth(ComponentToProtect) {
         return null;
       }
       if (redirect) {
+        console.log('redirect');
         return <Redirect to="/login" />;
       }
       return (

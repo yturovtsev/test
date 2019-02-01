@@ -29,7 +29,7 @@ app.get('/api/home', function(req, res) {
   res.send('Welcome!');
 });
 app.get('/api/secret', withAuth, function(req, res) {
-  res.send('The password is potato');
+  res.send(`Your email is ${req.email}`);
 });
 app.post('/api/register', function(req, res) {
   const { email, password } = req.body;

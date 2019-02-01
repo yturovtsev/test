@@ -26,11 +26,12 @@ export default class Login extends Component {
       }
     })
     .then(res => {
+      console.log(res.status);
       if (res.status === 200) {
         this.props.history.push('/');
       } else {
-        const error = new Error(res.error);
-        throw error;
+        console.log('redirect to login page');
+        this.props.history.push('/login');
       }
     })
     .catch(err => {
